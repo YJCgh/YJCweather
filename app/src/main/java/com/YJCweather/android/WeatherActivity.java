@@ -1,5 +1,6 @@
 package com.YJCweather.android;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.Image;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import com.YJCweather.android.gson.Forecast;
 import com.YJCweather.android.gson.Weather;
+import com.YJCweather.android.service.AutoUpdateService;
 import com.YJCweather.android.util.HttpUtil;
 import com.YJCweather.android.util.Utility;
 import com.bumptech.glide.Glide;
@@ -245,6 +247,11 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+
+
+        //激活AutoUpdateService这个服务
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 
 
